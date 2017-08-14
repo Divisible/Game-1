@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Висилица</title>
+</head>
+<body>
+	
+	
+	
+	<script>
+		// Создаем массив со словами
+		var words = ["программа", "клубника", "кот", "свадьба", "мама", "хвост", "кролик", "солнце",];
+		// Выбор рандомного слова для угадывания 
+		var word = words[Math.floor(Math.random() * words.length)];
+		// Вместо букв слова поставить символ нижнего подчеркивания
+		var answerArray = [];
+		for (var i = 0; i < word.length; i++) {
+			answerArray[i] = "_"
+		}
+		// Создаем переменную для отслеживания букв, которые осталось угадать
+		var remainingLetters = word.length;
+		// Програмируем основной цикл
+		while (remainingLetters > 0) {
+			alert(answerArray.join(" "));
+			var guess = prompt("Угадайте букву или нажмите Отмена для выходи из игры.");
+			if (guess === null) {
+				break;
+			} else if (guess.length !==1) {
+				alert("Пожалуйста введите только одну букву."); 
+			} else {
+				for (var j = 0; j < word.length; j++) {
+					if (word[j] === guess) {
+						answerArray[j] = guess;
+						remainingLetters--;
+					}
+				}
+			}
+		}
+		//
+		alert(answerArray.join(" "));
+		alert("Загадоное слово " + word);
+	</script>
+</body>
+</html>
